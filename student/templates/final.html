@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Lock Form</h1>
+<hr> {% if error_message %}
+<div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ error_message }}
+</div>
+{% endif %}
+<form method="POST" action="/final/">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="transaction_id">Fee Payment Transaction ID</label>
+        <input type="text" class="form-control" id="transaction_id" name="transaction_id" required>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Lock Form">
+    <input type="reset" class="btn btn-danger">
+</form>
+{% endblock %}

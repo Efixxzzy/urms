@@ -10,9 +10,9 @@ class Stream(models.Model):
 
 class Subject(models.Model):
     code = models.CharField(max_length=8)
-    type = models.CharField(max_length=3, choices=(
-        ('R', 'Regular'),
-        ('B/I', 'Back/Improvement')
+    type = models.CharField(max_length=20, choices=(
+        ('Regular', 'Regular'),
+        ('Re-register', 'Re-register')
     ))
 
     stream = models.ForeignKey("Stream", on_delete=models.CASCADE)
@@ -26,9 +26,10 @@ class Course(models.Model):
     code = models.CharField(max_length=8)
     title = models.CharField(max_length=80)
     credits = models.IntegerField()
+    professor = models.CharField(max_length=80)
 
     stream = models.ForeignKey("Stream", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.code + " - " + self.title
+        return self.code + " - " + self.title + " - " + str(self.credits) + " credits" + " - " + self.professor
 

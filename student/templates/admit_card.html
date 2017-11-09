@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block content %}
+<script>window.print()</script>
+<h1 class="text-center">Admit Card</h1>
+<hr>
+<table width="100%">
+    <tr>
+        <td width="50%">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    Name:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.name}}
+                </dd>
+                <dt class="col-sm-3">
+                    Roll No.:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.roll_no}}
+                </dd>
+                <dt class="col-sm-3">
+                    Stream:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.stream}}
+                </dd>
+                <dt class="col-sm-3">
+                    Date of Birth:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.date_of_birth}}
+                </dd>
+            </dl>
+        </td>
+        <td  width="50%">
+            <dl class="row">
+
+                <dt class="col-sm-3">
+                    Address:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.address}}
+                </dd>
+                <dt class="col-sm-3">
+                    Contact Number:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.contact_number}}
+                </dd>
+                <dt class="col-sm-3">
+                    Transaction ID:
+                </dt>
+                <dd class="col-sm-9">
+                    {{student.transaction_id}}
+                </dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+
+
+<hr>
+<h3>Courses Opted</h3>
+<br>
+<table class="table table-bordered">
+    <thead>
+        <th>#</th>
+        <th>Code</th>
+        <th>Title</th>
+        <th>Professor</th>
+    </thead>
+    <tbody>
+        {% for course in student.courses.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ course.code }}</td>
+            <td>{{ course.title }}</td>
+            <td>{{ course.professor }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

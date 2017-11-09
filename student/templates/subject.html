@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Chose Subjects</h1>
+<hr> {% if error_message %}
+<div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ error_message }}
+</div>
+{% endif %}
+<form method="POST" action="/subject/">
+    {% csrf_token %}
+    <h3>Regular Subjects</h3>
+    {% for subject in regular_subjects %}
+    <div class="form-group">
+        <label>
+            <strong>{{subject.code}}</strong> ({{subject.type}}) </label>
+        <select class="form-control" name="{{subject.code}}"> 
+        {% for course in subject.courses_offerred.all %}
+            <option value="{{course.pk}}">{{course}}</option>
+        {% endfor %}
+        </select>
+    </div>
+    {% endfor %}
+    <hr>
+    <h3>Re-register for subjects</h3>
+    {% for subject in reregister_subjects %}
+    <div class="form-group">
+        <label>
+            <strong>{{subject.code}}</strong> ({{subject.type}}) </label>
+        <select class="form-control" name="{{subject.code}}">
+            {% if subject.type == 'Re-register' %}
+            <option></option>
+            {% endif %} {% for course in subject.courses_offerred.all %}
+            <option value="{{course.pk}}">{{course}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endfor %}
+    <input type="submit" class="btn btn-primary">
+    <input type="reset" class="btn btn-danger">
+</form>
+{% endblock %}

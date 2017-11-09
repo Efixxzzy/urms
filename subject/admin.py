@@ -13,9 +13,9 @@ class SubjectAdmin(admin.ModelAdmin):
     search_fields = ['code', 'stream', 'courses_offerred', 'type']
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['code', 'title', 'credits', 'stream']
-    list_filter = ['stream', 'credits']
-    search_fields = ['code', 'title', 'credits', 'stream']
+    list_display = ['code', 'title', 'credits', 'stream', 'professor']
+    list_filter = ['stream', 'credits', 'professor']
+    search_fields = ['code', 'title', 'credits', 'stream', 'professor']
 
 admin.site.register(Stream, StreamAdmin)
 admin.site.register(Subject, SubjectAdmin)

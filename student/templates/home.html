@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="text-center">
+    <h1>Welcome</h1>
+    <hr> {% if error_message %}
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ error_message }}
+    </div>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Registration Form</h4>
+                <p class="card-text">Fill the registration form to register for the new semester.</p>
+                <a href="/student" class="btn btn-primary">Go to Registration Form</a>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Admit Card</h4>
+                <p class="card-text">Download Admit Card after locking registration form.</p>
+                <a href="/admitcard" class="btn btn-primary">Download</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+{% endblock %}
